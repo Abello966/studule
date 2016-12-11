@@ -2,37 +2,56 @@
 <html lang="pt-br">
 
 <head>
-  <title>studule</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>studule</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+	<!-- Cria objeto matéria -->
+
+
+	<!-- Script pra pegar os valores inseridos -->
+	<script>
+		$(document).ready(function(){
+	    $("button").click(function(){
+	        alert("Value: " + $("#test").val());
+	    });
+	});
+	</script>
+
+
 </head>
 
 
 <body>
+		
 	<div class="jumbotron text-center">
 		<h1>studule</h1>
-		<h2>"AAAAAAAAAAAAAAAH!"</h2>
-		<p>Antônio Augusto Abello</p>
 	</div>
+
+	<nav class="navbar navbar-default">
+	  	<center>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="index.html"> Tarefas </a></li>
+		      <li><a href="semana.html"> Horário </a></li>
+		    </ul>
+		</center>
+	  </div>
+	</nav>
 
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-2">
-				<h2>Matérias</h2>
-		  		<button type="button" class="btn btn-default">Adicionar Matéria</button>
+		<p>
+			<h3>Insira o nome da matéria/tarefa: </h3>
+  			<button type="button" class="btn btn-primary">Adicionar Matéria</button>
 
-			</div>
-			
-			<div class="col-sm-2">
-				<h2>Horário</h2>
+  			<>
 
-			</div>
-		</div>
-
+  		</p>
 	</div>
+
 </body>
 
 	
