@@ -10,15 +10,25 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+	<style>
+		.bg-1 {
+		    background-color:  #1abc9c; /* Green */
+		    color: #ffffff;
+		}
+		input{
+    		color: #12876f;
+		}
+	</style>
+
 </head>
 
 <body>
 		
-	<div class="jumbotron text-center">
+	<div class="jumbotron bg-1 text-center">
 		<h1>studule</h1>
 	</div>
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar bg-1  navbar-default">
 	  	<center>
 		    <ul class="nav navbar-nav">
 		    	<li><a href="studule.html"> studule </a></li>
@@ -30,34 +40,27 @@
 	</nav>
 
 	<center>
-	<div class="container">
-		<p>
+	<div class="container bg-1">
+		<form action="disciplinas.php">
+		
 			<h3>Insira os dados a seguir para gerar uma distribuição de horários: </h3>
 			<br>
 
-  			<p> <strong>Nome da disciplina:</strong> <input type="text" id="disciplina" value=" "></p>
+  			<p> <strong>Nome da disciplina:</strong> <input bg-2 type="text" id="disciplina" value=" "></p>
   			<br>
 
-  			<p><strong> Prioridade (1 a 5): </strong><input type="text" id="prioridade" value=" "></p>
+  			<p><strong> Prioridade (1 a 5): </strong><input type="text" name="prioridade" value=" "></p>
   			<br>
 
 
-  			<p><strong> Tempo disponível: </strong><input type="text" id="tempo_conclusão2" value=" "></p>
+  			<p><strong> Tempo disponível: </strong><input type="text"  name="tempo_conclusão2" value=" "></p>
   			<p> (durante a semana) </p>
   			<br>
-  		</p>
+  		</form>
+	  		
 	</div>
 	</center>
 
-	<div>
-		<footer>
-
-			<center>
-			<h3>studule<h3>
-			<p>2016</p>
-			</center>
-		</footer> 	
-	</div>
 
 </body>
 
