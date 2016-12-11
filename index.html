@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+
 <head>
 	<title>studule</title>
 	<meta charset="utf-8">
@@ -9,22 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-	<!-- Cria objeto matéria -->
-
-
-	<!-- Script pra pegar os valores inseridos -->
-	<script>
-		$(document).ready(function(){
-	    $("button").click(function(){
-	        alert("Value: " + $("#test").val());
-	    });
-	});
-	</script>
-
-
 </head>
-
 
 <body>
 		
@@ -35,23 +21,38 @@
 	<nav class="navbar navbar-default">
 	  	<center>
 		    <ul class="nav navbar-nav">
-		      <li class="active"><a href="index.html"> Tarefas </a></li>
-		      <li><a href="semana.html"> Horário </a></li>
+		    	<li><a href="studule.html"> studule </a></li>
+		        <li class="active"><a href="index.html"> Adicionar Disciplina </a></li>
+			    <li><a href="semana.html"> Horário </a></li>
 		    </ul>
 		</center>
 	  </div>
 	</nav>
 
+	<center>
 	<div class="container">
 		<p>
-			<h3>Insira o nome da matéria/tarefa: </h3>
-  			<button type="button" class="btn btn-primary">Adicionar Matéria</button>
+			<h3>Insira os dados a seguir para gerar uma distribuição de horários: </h3>
+			<br>
 
-  			<>
+  			<p> <strong>Nome da tarefa:</strong> <input type="text" id="tarefa" value=" "></p>
+  			<br>
 
+  			<p><strong> Prioridade (1 a 5): </strong><input type="text" id="tarefa" value=" "></p>
+  			<br>
+
+
+  			<p><strong> Tempo que você espera dedicar a essa tarefa durante a semana: </strong><input type="text" id="tempo_conclusão2" value=" "></p>
+  			<br>
   		</p>
 	</div>
+	</center>
 
 </body>
+<div id="copyright">
+	<h1>studule - 2016</h1>
+</div>
+
+</html>
 
 	
