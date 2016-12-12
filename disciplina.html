@@ -13,55 +13,14 @@
     <script src="js/disciplina.js"></script>
     <script src="js/horario.js"></script>
     <script src="js/semana.js"></script>
+    <script src="js/controller.js"></script>
     <script src="js/3rdparty/js.cookie.js"></script>
 
     <link rel="stylesheet" href="default.css">
 </head>
-
-    <style>
-        button.btn.btn-default.newdisc_but {
-            margin-bottom: 2%;
-        }
-        .disc_box {
-            margin-top: 5%;
-        }
-
-        p.form_title {
-           font-weight: bold;
-            margin-bottom: 1%;
-        }
-    </style>
     <script>
         global.open();
         var disc_num = window.disciplinas.lenght;
-
-        function addDisc() {
-            var name = document.getElementsByName('disciplina')[0].value;
-            var abrev = document.getElementsByName('abrev')[0].value;
-            var prior = document.getElementsByName('prioridade')[0].value;
-            var tempo = document.getElementsByName('tempo')[0].value;
-            if (!name || !abrev || !prior || !tempo) {
-                alert("Preencha todos os campos adequadamente");
-                return;
-            }
-                
-            newdisc = new Disciplina(name, abrev, prior, tempo);
-            obj = document.getElementById("disc_container");
-            if (disc_num == 0) {
-                obj.innerHTML = "";
-            } 
-            obj.appendChild(describeDisc(newdisc));
-            window.disciplinas.push(newdisc);
-            disc_num++;
-            global.save();
-        }
-
-        function removeDisc(name) {
-            /*chama model*/
-            deleteDisc(name);
-            /*atualiza*/
-            location.reload();
-        }
 
         /*Quando tudo estiver pronto carrega disciplinas */
         $(document).ready(function() {

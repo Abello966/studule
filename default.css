@@ -1,3 +1,6 @@
+/*Junta estilos de todos os lugares, pois são poucos */
+
+/* GERAL */
 .bg-1 {
     background-color:  #1abc9c; /* Green */
     color: #ffffff;
@@ -10,5 +13,51 @@
 
 input{
 	color: #12876f;
+}
+
+/*SEMANA */
+
+.table-bordered th {
+    text-align: center;
+}
+
+.table_container {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+th.available {
+    background-color: #A4FEA4;
+}
+
+.main_buttons button {
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+.main_buttons {
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 1.5%;
+}
+
+.pre_text {
+    padding-left: 3%;
+    font-size: 120%;
+}
+
+
+/*DISCIPLINA*/
+button.btn.btn-default.newdisc_but {
+    margin-bottom: 2%;
+}
+
+.disc_box {
+    margin-top: 5%;
+}
+
+p.form_title {
+    font-weight: bold;
+    margin-bottom: 1%;
 }
 

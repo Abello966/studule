@@ -13,48 +13,17 @@
     <script src="js/disciplina.js"></script>
     <script src="js/horario.js"></script>
     <script src="js/semana.js"></script>
+    <script src="js/controller.js"></script>
     <script src="js/3rdparty/js.cookie.js"></script>
     
     <link rel="stylesheet" href="default.css">
-
-    <style>
-        /* TODO: passar para arquivo separado */
-        .table-bordered th {
-            text-align: center;
-        } 
-        .table_container {
-            padding-left: 2.5%;
-            padding-right: 2.5%;
-        }
-
-       th.available {
-           background-color: #a4ffa4;
-       }
-
-       .main_buttons button {
-            margin-right: 3%;
-            margin-left: 3%;
-        }
-       .main_buttons {
-           text-align: center;
-           margin-bottom: 1%;
-           margin-top: 1.5%;
-       }
-
-       .pre_text {
-           padding-left: 3%;
-          font-size: 120%;
-       }
-
-    </style>
     <script>
         //carrega informações de cookies
         global.open(); 
     
         //variável local do estado do calendario
         //se estiver com horario nao faz sentido mudar disponibilidade
-        var build = false; //começa falso, muda pra true ao aprontar, muda pra false ao ressetar
-      
+        var build = false; //começa falso, muda pra true ao aprontar, muda pra false ao ressetar 
 
         /*Documento foi carregado*/
         $( document ).ready(function() {
