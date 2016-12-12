@@ -12,23 +12,23 @@ var global = {
 
     open: function() {
         /*Abre ou chama inicializador se é a primeira vez*/
-        if (Cookies.get('origin')) {
+        if (Cookies.get('origin') && Cookies.get('disciplinas')) {
             /*já existe*/
-            window.semana = Cookies.get('semana');
             window.disciplinas = Cookies.get('disciplinas');
             console.log("Dados carregados de: "+ Cookies.get('origin'));
         }
         else {
-            window.semana = SemanaBootstrap();
+            window.disciplinas = [];
+            Cookies.set('disciplinas', window.disciplinas);
             this.save();
-        }   
+        }
+
     },
     
     /* atualiza cookie */
     save: function() {
         /*Cookie expira em 7 dias */
-        Cookies.set('semana', window.semana, {expires: 7})
-        Cookies.set('disciplinas', window.disciplinas, {expires: 7})    
+        Cookies.set('disciplinas', window.disciplinas)    
         Cookies.set('origin', new Date());
     },
 }

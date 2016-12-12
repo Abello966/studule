@@ -14,6 +14,16 @@ function Semana(horarios) {
 
 /*Cria uma semana inteira vazia*/
 function SemanaBootstrap() {
-  //TODO 
+    /*horarios*/
+    newhorarios = []
+    for (var i = 0; i < window.ndays; i++) {
+        day = []
+        for (var j = 0; j < window.nhorarios; j++) {
+            hor = new Horario();
+            day.push(hor);
+        }
+        newhorarios.push(day);
+    }
+    window.semana = new Semana(newhorarios);
 }
 

@@ -9,6 +9,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/disciplina.js"></script>
+    <script src="js/horario.js"></script>
+    <script src="js/semana.js"></script>
+    <script src="js/3rdparty/js.cookie.js"></script>
 
 	<style>
 		.bg-1 {
@@ -24,35 +29,6 @@
     		color: #12876f;
 		}
 	</style>
-
-     <script type="text/javascript">
-	
-	    var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
-	    var msg;
-		
-     	db.transaction(function (tx) {
-	        tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
-	        tx.executeSql('INSERT INTO DISCIPLNAS (nome, prioridade, tempo_disp) VALUES ()');
-	        
-	        msg = '<p>Log message created and row inserted.</p>';
-
-	        document.querySelector('#status').innerHTML =  msg;
-     	});
-
-     	db.transaction(function (tx) {
-        tx.executeSql('SELECT * FROM DISCIPLINAS', [], function (tx, results) {
-           var len = results.rows.length, i;
-           msg = "<p>Found rows: " + len + "</p>";
-           document.querySelector('#status').innerHTML +=  msg;
-				
-           		for (i = 0; i < len; i++){
-              		msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
-            		document.querySelector('#status').innerHTML +=  msg;
-           		}
-        	}, null);
-    	});
-		
-	</script>
 
 <body>
 		
@@ -93,6 +69,11 @@
 	</div>
 	</center>
 
+
+    <script type="text/javascript">
+        /*Inicializa dados*/
+	    global.open();
+	</script>
 
 </body>
 	<div class="container bg-2">

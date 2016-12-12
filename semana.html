@@ -9,6 +9,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="js/global.js"></script>
+    <script src="js/disciplina.js"></script>
+    <script src="js/horario.js"></script>
+    <script src="js/semana.js"></script>
+    <script src="js/3rdparty/js.cookie.js"></script>
 
 	<style>
 		.bg-1 {
@@ -20,6 +25,55 @@
 		    color: #12876f;
 		}
 	</style>
+    <style>
+        /* TODO: passar para arquivo separado */
+        .table-bordered th {
+            text-align: center;
+        } 
+        .table_container {
+            padding-left: 2.5%;
+            padding-right: 2.5%;
+        }
+
+       th.notavailable {
+           background-color: #ff9c9c;
+       }
+    </style>
+    <script>
+        //carrega informações de cookies
+        global.open(); 
+    
+        //variável local do estado do calendario
+        //se estiver com horario nao faz sentido mudar disponibilidade
+        var build = false; //começa falso, muda pra true ao aprontar, muda pra false ao ressetar
+      
+
+        /*Documento foi carregado*/
+        $( document ).ready(function() {
+
+            /*Inicializa Semana */
+            SemanaBootstrap();
+
+            /* Observer de clicks em horarios */
+            $(" th ").click(function(event) {
+                var clicked = event.target;
+                var nday = clicked.getAttribute('data-day');
+                var nhor = clicked.getAttribute('data-hor');
+                if (nday != null && nhor != null && !build) {
+                    result = mudaDisponibilidade(nday, nhor);
+                    console.log(result);
+                    if (result == true) {
+                        event.target.setAttribute('class', "");
+                    }
+                    if (result == false) {
+                        event.target.setAttribute('class', 'notavailable');
+                    }
+                }
+            });
+
+            
+        })
+    </script>
 
 </head>
 
@@ -34,327 +88,326 @@
 
 
 	<nav class="navbar bg-1 navbar-default">
-	  	<center>
+	  	
 		    <ul class="nav navbar-nav">
 	    		<li><a href="studule.html"> studule </a></li>
 		      	<li><a href="index.html"> Adicionar Disciplina </a></li>
 		      	<li class="active"><a href="semana.html"> Horário </a></li>
 		    </ul>
-		</center>
+		
 	  </div>
 	</nav>
 
 
 	
-	<center>
+    <div class="table_container">	
 		<div class="table-responsive bg-2">
 		  <table class="table table-bordered">
 		    <thead>
 		    	<tr>
-		    		<center>
-			    	<th> <center> Horário </center> </th>
-			    	<th> <center> Domingo </center> </th>
-			    	<th> <center> Segunda </center> </th>
-			    	<th> <center> Terça </center> </th>
-			    	<th> <center> Quarta </center> </th>
-			    	<th> <center> Quinta </center> </th>
-			    	<th> <center> Sexta </center> </th>
-			    	<th> <center> Sábado </center> </th>
-			    	</center>
+		    		
+			    	<th>  Horário  </th>
+			    	<th>  Domingo  </th>
+			    	<th>  Segunda  </th>
+			    	<th>  Terça  </th>
+			    	<th>  Quarta  </th>
+			    	<th>  Quinta  </th>
+			    	<th>  Sexta  </th>
+			    	<th>  Sábado  </th>
+			    	
 			    </tr>
 		    </thead>
 
 		    <tbody>
-		    	<th> <center> 8:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  8:00  </th>
+		    	<th data-day = "0" data-hor="0">    </th>
+		    	<th data-day = "1" data-hor="0">    </th>
+		    	<th data-day = "2" data-hor="0">    </th>
+		    	<th data-day = "3" data-hor="0">    </th>
+		    	<th data-day = "4" data-hor="0">    </th>
+		    	<th data-day = "5" data-hor="0">    </th>
+		    	<th data-day = "6" data-hor="0">    </th>
 		    </tbody>
 
 		    <tbody>
-		    	<th> <center> 8:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  8:30  </th>
+		    	<th data-day = "0" data-hor="1">    </th>
+		    	<th data-day = "1" data-hor="1">    </th>
+		    	<th data-day = "2" data-hor="1">    </th>
+		    	<th data-day = "3" data-hor="1">    </th>
+		    	<th data-day = "4" data-hor="1">    </th>
+		    	<th data-day = "5" data-hor="1">    </th>
+		    	<th data-day = "6" data-hor="1">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 9:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  9:00  </th>
+		    	<th data-day = "0" data-hor="2">    </th>
+		    	<th data-day = "1" data-hor="2">    </th>
+		    	<th data-day = "2" data-hor="2">    </th>
+		    	<th data-day = "3" data-hor="2">    </th>
+		    	<th data-day = "4" data-hor="2">    </th>
+		    	<th data-day = "5" data-hor="2">    </th>
+		    	<th data-day = "6" data-hor="2">    </th>
 		    </tbody>
 
 			<tbody>
-		    	<th> <center> 9:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  9:30  </th>
+		    	<th data-day = "0" data-hor="3">    </th>
+		    	<th data-day = "1" data-hor="3">    </th>
+		    	<th data-day = "2" data-hor="3">    </th>
+		    	<th data-day = "3" data-hor="3">    </th>
+		    	<th data-day = "4" data-hor="3">    </th>
+		    	<th data-day = "5" data-hor="3">    </th>
+		    	<th data-day = "6" data-hor="3">    </th>
 		    </tbody>
 
 		    <tbody>
-		    	<th> <center> 10:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
-		    </tbody>
-
-
-		    <tbody>
-		    	<th> <center> 10:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
-		    </tbody>
-
-		    <tbody>
-		    	<th> <center> 11:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
-		    </tbody>
-
-		    <tbody>
-		    	<th> <center> 11:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
-		    </tbody>
-
-		    <tbody>
-		    	<th> <center> 12:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
-		    </tbody>
-
-		    <tbody>
-		    	<th> <center> 12:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  10:00  </th>
+		    	<th data-day = "0" data-hor="4">    </th>
+		    	<th data-day = "1" data-hor="4">    </th>
+		    	<th data-day = "2" data-hor="4">    </th>
+		    	<th data-day = "3" data-hor="4">    </th>
+		    	<th data-day = "4" data-hor="4">    </th>
+		    	<th data-day = "5" data-hor="4">    </th>
+		    	<th data-day = "6" data-hor="4">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 13:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  10:30  </th>
+		    	<th data-day = "0" data-hor="5">    </th>
+		    	<th data-day = "1" data-hor="5">    </th>
+		    	<th data-day = "2" data-hor="5">    </th>
+		    	<th data-day = "3" data-hor="5">    </th>
+		    	<th data-day = "4" data-hor="5">    </th>
+		    	<th data-day = "5" data-hor="5">    </th>
+		    	<th data-day = "6" data-hor="5">    </th>
+		    </tbody>
+
+		    <tbody>
+		    	<th>  11:00  </th>
+		    	<th data-day = "0" data-hor="6">    </th>
+		    	<th data-day = "1" data-hor="6">    </th>
+		    	<th data-day = "2" data-hor="6">    </th>
+		    	<th data-day = "3" data-hor="6">    </th>
+		    	<th data-day = "4" data-hor="6">    </th>
+		    	<th data-day = "5" data-hor="6">    </th>
+		    	<th data-day = "6" data-hor="6">    </th>
+		    </tbody>
+
+		    <tbody>
+		    	<th>  11:30  </th>
+		    	<th data-day = "0" data-hor="7">    </th>
+		    	<th data-day = "1" data-hor="7">    </th>
+		    	<th data-day = "2" data-hor="7">    </th>
+		    	<th data-day = "3" data-hor="7">    </th>
+		    	<th data-day = "4" data-hor="7">    </th>
+		    	<th data-day = "5" data-hor="7">    </th>
+		    	<th data-day = "6" data-hor="7">    </th>
+		    </tbody>
+
+		    <tbody>
+		    	<th>  12:00  </th>
+		    	<th data-day = "0" data-hor="8">    </th>
+		    	<th data-day = "1" data-hor="8">    </th>
+		    	<th data-day = "2" data-hor="8">    </th>
+		    	<th data-day = "3" data-hor="8">    </th>
+		    	<th data-day = "4" data-hor="8">    </th>
+		    	<th data-day = "5" data-hor="8">    </th>
+		    	<th data-day = "6" data-hor="8">    </th>
+		    </tbody>
+
+		    <tbody>
+		    	<th>  12:30  </th>
+		    	<th data-day = "0" data-hor="9">    </th>
+		    	<th data-day = "1" data-hor="9">    </th>
+		    	<th data-day = "2" data-hor="9">    </th>
+		    	<th data-day = "3" data-hor="9">    </th>
+		    	<th data-day = "4" data-hor="9">    </th>
+		    	<th data-day = "5" data-hor="9">    </th>
+		    	<th data-day = "6" data-hor="9">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 13:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
-		    </tbody>
-
-		    <tbody>
-		    	<th> <center> 14:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  13:00  </th>
+		    	<th data-day = "0" data-hor="10">    </th>
+		    	<th data-day = "1" data-hor="10">    </th>
+		    	<th data-day = "2" data-hor="10">    </th>
+		    	<th data-day = "3" data-hor="10">    </th>
+		    	<th data-day = "4" data-hor="10">    </th>
+		    	<th data-day = "5" data-hor="10">    </th>
+		    	<th data-day = "6" data-hor="10">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 14:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  13:30  </th>
+		    	<th data-day = "0" data-hor="11">    </th>
+		    	<th data-day = "1" data-hor="11">    </th>
+		    	<th data-day = "2" data-hor="11">    </th>
+		    	<th data-day = "3" data-hor="11">    </th>
+		    	<th data-day = "4" data-hor="11">    </th>
+		    	<th data-day = "5" data-hor="11">    </th>
+		    	<th data-day = "6" data-hor="11">    </th>
+		    </tbody>
+
+		    <tbody>
+		    	<th>  14:00  </th>
+		    	<th data-day = "0" data-hor="12">    </th>
+		    	<th data-day = "1" data-hor="12">    </th>
+		    	<th data-day = "2" data-hor="12">    </th>
+		    	<th data-day = "3" data-hor="12">    </th>
+		    	<th data-day = "4" data-hor="12">    </th>
+		    	<th data-day = "5" data-hor="12">    </th>
+		    	<th data-day = "6" data-hor="12">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 15:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  14:30  </th>
+		    	<th data-day = "0" data-hor="13">    </th>
+		    	<th data-day = "1" data-hor="13">    </th>
+		    	<th data-day = "2" data-hor="13">    </th>
+		    	<th data-day = "3" data-hor="13">    </th>
+		    	<th data-day = "4" data-hor="13">    </th>
+		    	<th data-day = "5" data-hor="13">    </th>
+		    	<th data-day = "6" data-hor="13">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 15:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  15:00  </th>
+		    	<th data-day = "0" data-hor="14">    </th>
+		    	<th data-day = "1" data-hor="14">    </th>
+		    	<th data-day = "2" data-hor="14">    </th>
+		    	<th data-day = "3" data-hor="14">    </th>
+		    	<th data-day = "4" data-hor="14">    </th>
+		    	<th data-day = "5" data-hor="14">    </th>
+		    	<th data-day = "6" data-hor="14">    </th>
+		    </tbody>
+
+
+		    <tbody>
+		    	<th>  15:30  </th>
+		    	<th data-day = "0" data-hor="15">    </th>
+		    	<th data-day = "1" data-hor="15">    </th>
+		    	<th data-day = "2" data-hor="15">    </th>
+		    	<th data-day = "3" data-hor="15">    </th>
+		    	<th data-day = "4" data-hor="15">    </th>
+		    	<th data-day = "5" data-hor="15">    </th>
+		    	<th data-day = "6" data-hor="15">    </th>
 		    </tbody>
 
 
 
 		    <tbody>
-		    	<th> <center> 16:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  16:00  </th>
+		    	<th data-day = "0" data-hor="16">    </th>
+		    	<th data-day = "1" data-hor="16">    </th>
+		    	<th data-day = "2" data-hor="16">    </th>
+		    	<th data-day = "3" data-hor="16">    </th>
+		    	<th data-day = "4" data-hor="16">    </th>
+		    	<th data-day = "5" data-hor="16">    </th>
+		    	<th data-day = "6" data-hor="16">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 16:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  16:30  </th>
+		    	<th data-day = "0" data-hor="17">    </th>
+		    	<th data-day = "1" data-hor="17">    </th>
+		    	<th data-day = "2" data-hor="17">    </th>
+		    	<th data-day = "3" data-hor="17">    </th>
+		    	<th data-day = "4" data-hor="17">    </th>
+		    	<th data-day = "5" data-hor="17">    </th>
+		    	<th data-day = "6" data-hor="17">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 17:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  17:00  </th>
+		    	<th data-day = "0" data-hor="18">    </th>
+		    	<th data-day = "1" data-hor="18">    </th>
+		    	<th data-day = "2" data-hor="18">    </th>
+		    	<th data-day = "3" data-hor="18">    </th>
+		    	<th data-day = "4" data-hor="18">    </th>
+		    	<th data-day = "5" data-hor="18">    </th>
+		    	<th data-day = "6" data-hor="18">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 17:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  17:30  </th>
+		    	<th data-day = "0" data-hor="19">    </th>
+		    	<th data-day = "1" data-hor="19">    </th>
+		    	<th data-day = "2" data-hor="19">    </th>
+		    	<th data-day = "3" data-hor="19">    </th>
+		    	<th data-day = "4" data-hor="19">    </th>
+		    	<th data-day = "5" data-hor="19">    </th>
+		    	<th data-day = "6" data-hor="19">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 18:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  18:00  </th>
+		    	<th data-day = "0" data-hor="20">    </th>
+		    	<th data-day = "1" data-hor="20">    </th>
+		    	<th data-day = "2" data-hor="20">    </th>
+		    	<th data-day = "3" data-hor="20">    </th>
+		    	<th data-day = "4" data-hor="20">    </th>
+		    	<th data-day = "5" data-hor="20">    </th>
+		    	<th data-day = "6" data-hor="20">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 18:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  18:30  </th>
+		    	<th data-day = "0" data-hor="21">    </th>
+		    	<th data-day = "1" data-hor="21">    </th>
+		    	<th data-day = "2" data-hor="21">    </th>
+		    	<th data-day = "3" data-hor="21">    </th>
+		    	<th data-day = "4" data-hor="21">    </th>
+		    	<th data-day = "5" data-hor="21">    </th>
+		    	<th data-day = "6" data-hor="21">    </th>
 		    </tbody>
 
 		    <tbody>
-		    	<th> <center> 19:00 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  19:00  </th>
+		    	<th data-day = "0" data-hor="22">    </th>
+		    	<th data-day = "1" data-hor="22">    </th>
+		    	<th data-day = "2" data-hor="22">    </th>
+		    	<th data-day = "3" data-hor="22">    </th>
+		    	<th data-day = "4" data-hor="22">    </th>
+		    	<th data-day = "5" data-hor="22">    </th>
+		    	<th data-day = "6" data-hor="22">    </th>
 		    </tbody>
 
 
 		    <tbody>
-		    	<th> <center> 19:30 </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>
-		    	<th> <center>  </center> </th>		    	
+		    	<th>  19:30  </th>
+		    	<th data-day = "0" data-hor="23">    </th>
+		    	<th data-day = "1" data-hor="23">    </th>
+		    	<th data-day = "2" data-hor="23">    </th>
+		    	<th data-day = "3" data-hor="23">    </th>
+		    	<th data-day = "4" data-hor="23">    </th>
+		    	<th data-day = "5" data-hor="23">    </th>
+		    	<th data-day = "6" data-hor="23">    </th>
 		    </tbody>
 		    
 		  </table>
 		</div> 
-	</center>
-
+    </div>
 </body>
 	<div class="container bg-2">
 		<footer>
 
-			<center>
+			
 			<h3>studule<h3>
 			<h4>2016</h4>
-			</center>
+			
 		</footer> 	
 	</div>
 </html>

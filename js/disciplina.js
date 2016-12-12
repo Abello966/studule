@@ -2,9 +2,9 @@
 window.disciplinas = []
 
 /*Prototipo de objeto/classe*/
-function Disciplina(nome, apelido, prioridade) {
+function Disciplina(nome, apelido, prioridade, horastra) {
     this.nome = nome;
     this.apelido = apelido;
     this.prioridade = prioridade;
-    this.horarios = [] //necessario?
+    this.horas = horas;
 }
