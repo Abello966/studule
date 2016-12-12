@@ -15,49 +15,24 @@
 		    background-color:  #1abc9c; /* Green */
 		    color: #ffffff;
 		}
+
 		.bg-2 {
 		    background-color: #ffffff;
 		    color: #12876f;
 		}
 
 		input{
-    		color: #12876f;
+			color: #12876f;
 		}
 	</style>
 
-     <script type="text/javascript">
-	
-	    var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
-	    var msg;
-		
-     	db.transaction(function (tx) {
-	        tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
-	        tx.executeSql('INSERT INTO DISCIPLNAS (nome, prioridade, tempo_disp) VALUES ()');
-	        
-	        msg = '<p>Log message created and row inserted.</p>';
-
-	        document.querySelector('#status').innerHTML =  msg;
-     	});
-
-     	db.transaction(function (tx) {
-        tx.executeSql('SELECT * FROM DISCIPLINAS', [], function (tx, results) {
-           var len = results.rows.length, i;
-           msg = "<p>Found rows: " + len + "</p>";
-           document.querySelector('#status').innerHTML +=  msg;
-				
-           		for (i = 0; i < len; i++){
-              		msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
-            		document.querySelector('#status').innerHTML +=  msg;
-           		}
-        	}, null);
-    	});
-		
-	</script>
+</head>
 
 <body>
 		
 	<div class="jumbotron bg-1 text-center">
 		<h1>studule</h1>
+		<h4> seu horário de estudos </h4>
 	</div>
 
 	<nav class="navbar bg-1  navbar-default">
@@ -71,28 +46,53 @@
 	  </div>
 	</nav>
 
+
+
 	<center>
-	<div class="container bg-1">
-		<form action="disciplinas.php">
-		
-			<h3>Insira os dados a seguir para gerar uma distribuição de horários: </h3>
-			<br>
+		<div class="container bg-1">
+			<div class="row">
+				<div class="col-sm-6">	
+					<form action="disciplinas.php">
+					
+						<h3>Insira os dados a seguir para gerar uma distribuição de horários: </h3>
+						<br>
 
-  			<p> <strong>Nome da disciplina:</strong> <input bg-2 type="text" id="disciplina" value=" "></p>
-  			<br>
+			  			<p> <strong>Nome da disciplina:</strong> <input bg-2 type="text" id="disciplina" value=" "></p>
+			  			<br>
 
-  			<p><strong> Prioridade (1 a 5): </strong><input type="text" name="prioridade" value=" "></p>
-  			<br>
+			  			<p><strong> Prioridade (1 a 5): </strong><input type="text" name="prioridade" value=" "></p>
+			  			<br>
 
 
-  			<p><strong> Tempo disponível: </strong><input type="text"  name="tempo_conclusão2" value=" "></p>
-  			<p> (durante a semana) </p>
-  			<br>
-  		</form>
-	  		
-	</div>
+			  			<p><strong> Tempo disponível: </strong><input type="text"  name="tempo_conclusão2" value=" "></p>
+			  			<p> (durante a semana) </p>
+			  			<br>
+			  		</form>
+			  	</div>
+			
+
+			  	<div class="col-sm-6">
+			  		<h3> Disciplinas cadastradas </h3>
+			  			<br>
+			  			</br>
+
+			  			<h4>CATZRULEZ - Como Cuidar de Gatinhos I</h4>
+			  			<p> Tempo de estudo na semana: <strong>36h </strong> </p>
+			  			<p> Prioridade: <strong>5</strong></p>
+
+			  			<br>
+
+			  			<h4> AHHH101 - Como entrar em pânico com o Toninho I </h4>
+			  			<p> Tempo de estudo na semana: <strong>4h </strong> </p>
+			  			<p> Prioridade: <strong>4</strong></p>
+
+
+			  	</div>
+			  </div>
+			</div>
+		</div>
 	</center>
-
+	
 
 </body>
 	<div class="container bg-2">
