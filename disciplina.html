@@ -16,11 +16,63 @@
     <script src="js/3rdparty/js.cookie.js"></script>
 
     <link rel="stylesheet" href="default.css">
-
 </head>
 
+    <style>
+        button.btn.btn-default.newdisc_but {
+            margin-bottom: 2%;
+        }
+        .disc_box {
+            margin-top: 5%;
+        }
+
+        p.form_title {
+           font-weight: bold;
+            margin-bottom: 1%;
+        }
+    </style>
+    <script>
+        global.open();
+        var disc_num = window.disciplinas.lenght;
+
+        function addDisc() {
+            var name = document.getElementsByName('disciplina')[0].value;
+            var abrev = document.getElementsByName('abrev')[0].value;
+            var prior = document.getElementsByName('prioridade')[0].value;
+            var tempo = document.getElementsByName('tempo')[0].value;
+            if (!name || !abrev || !prior || !tempo) {
+                alert("Preencha todos os campos adequadamente");
+                return;
+            }
+                
+            newdisc = new Disciplina(name, abrev, prior, tempo);
+            obj = document.getElementById("disc_container");
+            if (disc_num == 0) {
+                obj.innerHTML = "";
+            } 
+            obj.appendChild(describeDisc(newdisc));
+            window.disciplinas.push(newdisc);
+            disc_num++;
+            global.save();
+        }
+
+        /*Quando tudo estiver pronto carrega disciplinas */
+        $(document).ready(function() {
+            discs = describeAllDisc();
+            if (discs.length > 0) {
+                obj = document.getElementById("disc_container");
+                obj.innerHTML = "";
+                for (var i = 0; i < discs.length; i++)
+                    obj.appendChild(discs[i]);
+            }
+        });
+     
+       
+    </script>
+
 <body>
-		
+
+     		
 	<div class="jumbotron bg-1 text-center">
 		<h1>studule</h1>
 		<h4> seu horário de estudos </h4>
@@ -43,53 +95,38 @@
 		<div class="container bg-1">
 			<div class="row">
 				<div class="col-sm-6">	
-					<form action="disciplinas.php">
+					<form id="myform">
 					
-						<h3>Insira os dados a seguir para gerar uma distribuição de horários: </h3>
-						<br>
+						<h3>Nova Disciplina</h3>
 
-			  			<p> <strong>Nome da disciplina:</strong> <input bg-2 type="text" id="disciplina" value=" "></p>
-			  			<br>
+			  			<p class='form_title'>Nome da disciplina:</p>
+                        <input bg-2 type="text" name="disciplina" value=" ">
 
-			  			<p><strong> Prioridade (1 a 5): </strong><input type="text" name="prioridade" value=" "></p>
-			  			<br>
+			  			<p class='form_title'>Código/Abreviatura:</p>
+                        <input bg-2 type="text" name="abrev" value=" ">
 
+			  			<p class='form_title'>Prioridade (1 a 5): </p>
+                        <input type="number" min='1' max='5'  name="prioridade" value=" ">
 
-			  			<p><strong> Tempo disponível: </strong><input type="text"  name="tempo_conclusão2" value=" "></p>
+			  			<p class='form_title'>Tempo necessário:</p>
+                        <input type="text"  name="tempo" value=" ">
 			  			<p> (durante a semana) </p>
-			  			<br>
+                     <button onclick="addDisc()" type="button" class="btn btn-default newdisc_but">Enviar</button>
 			  		</form>
 			  	</div>
 			
 
 			  	<div class="col-sm-6">
 			  		<h3> Disciplinas cadastradas </h3>
-			  			<br>
-			  			</br>
-
-			  			<h4>CATZRULEZ - Como Cuidar de Gatinhos I</h4>
-			  			<p> Tempo de estudo na semana: <strong>36h </strong> </p>
-			  			<p> Prioridade: <strong>5</strong></p>
-
-			  			<br>
-
-			  			<h4> AHHH101 - Como entrar em pânico com o Toninho I </h4>
-			  			<p> Tempo de estudo na semana: <strong>4h </strong> </p>
-			  			<p> Prioridade: <strong>4</strong></p>
-
-
+			  			<div id='disc_container'>
+                            Ops! Nenhuma disciplina aqui ainda                    
+                        </div>
 			  	</div>
 			  </div>
 			</div>
 		</div>
 	</center>
 	
-
-    <script type="text/javascript">
-        /*Inicializa dados*/
-	    global.open();
-	</script>
-
 </body>
 	<div class="container bg-2">
 		<footer>

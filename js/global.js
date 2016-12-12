@@ -14,7 +14,8 @@ var global = {
         /*Abre ou chama inicializador se é a primeira vez*/
         if (Cookies.get('origin') && Cookies.get('disciplinas')) {
             /*já existe*/
-            window.disciplinas = Cookies.get('disciplinas');
+            window.disciplinas = JSON.parse(Cookies.get('disciplinas'));
+
             console.log("Dados carregados de: "+ Cookies.get('origin'));
         }
         else {
