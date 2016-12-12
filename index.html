@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-
 <head>
 	<title>studule</title>
 	<meta charset="utf-8">
@@ -9,100 +8,58 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/global.js"></script>
-    <script src="js/disciplina.js"></script>
-    <script src="js/horario.js"></script>
-    <script src="js/semana.js"></script>
-    <script src="js/3rdparty/js.cookie.js"></script>
-
-	<style>
-		.bg-1 {
-		    background-color:  #1abc9c; /* Green */
-		    color: #ffffff;
-		}
-
-		.bg-2 {
-		    background-color: #ffffff;
-		    color: #12876f;
-		}
-
-		input{
-			color: #12876f;
-		}
-	</style>
+    <link rel="stylesheet" href="default.css">
 
 </head>
+
+
 
 <body>
 		
 	<div class="jumbotron bg-1 text-center">
 		<h1>studule</h1>
-		<h4> seu horário de estudos </h4>
+		<h5> seu horário de estudos</h5>
 	</div>
 
-	<nav class="navbar bg-1  navbar-default">
+	<nav class="navbar  bg-1 navbar-default">
 	  	<center>
 		    <ul class="nav navbar-nav">
-		    	<li><a href="studule.html"> studule </a></li>
-		        <li class="active"><a href="index.html"> Adicionar Disciplina </a></li>
+		    	<li class="active"><a href="studule.html"> studule </a></li>
+		        <li><a href="disciplina.html"> Adicionar Disciplina </a></li>
 			    <li><a href="semana.html"> Horário </a></li>
+			    <li><a href="semana.html">  </a></li>
 		    </ul>
 		</center>
 	  </div>
 	</nav>
 
+	<div class="container  bg-1">
+		<center>
+			<h3> O que é?</h3>
+			<p> <strong>studule</strong> é uma ferramenta que te auxilia no estabelecimento de horários para aumentar o rendimento no cumprimento de tarefds.</p>
+			<p> Distribuimos as disciplinas em blocos de 30 min para que você possa <strong> se concentrar apenas estudar </strong> durante <strong>25 min</strong> e descansar durante <strong>5 min</strong>. </p>
+			<p> Assim, sua mente não fica exausta e você pode se dedicar a outras tarefas. </p>
+			<br>
+
+			<h3> Dicas </h3>
+			<p> Tente não se distrair com o ambiente ao seu redor. <strong>Evite</strong> ações como: usar o celular, acessar redes sociais e assistir televisão.</p>
+			<p> <strong>Faça essas coisas quando estiver na sua pausa!</strong> </p>
+
+			<p> As pausas são momentos muito importantes em que você deve fazer algo diferente das disciplinas como: tomar um ar fresco, esticar as pernas, checar suas mensagens ou até meamo ficar completamente à toa.
+			<br><br>
+
+			<h3> Gostou? </h3>
+			<p> Queremos te ajudar no aumento da sua produtividade.</p>
+			<p> E <strong>você</strong>, o que quer fazer sobre ela?</p>
+			<br><br>
+
+		</center>
+
+	</div>
 
 
-	<center>
-		<div class="container bg-1">
-			<div class="row">
-				<div class="col-sm-6">	
-					<form action="disciplinas.php">
-					
-						<h3>Insira os dados a seguir para gerar uma distribuição de horários: </h3>
-						<br>
-
-			  			<p> <strong>Nome da disciplina:</strong> <input bg-2 type="text" id="disciplina" value=" "></p>
-			  			<br>
-
-			  			<p><strong> Prioridade (1 a 5): </strong><input type="text" name="prioridade" value=" "></p>
-			  			<br>
 
 
-			  			<p><strong> Tempo disponível: </strong><input type="text"  name="tempo_conclusão2" value=" "></p>
-			  			<p> (durante a semana) </p>
-			  			<br>
-			  		</form>
-			  	</div>
-			
-
-			  	<div class="col-sm-6">
-			  		<h3> Disciplinas cadastradas </h3>
-			  			<br>
-			  			</br>
-
-			  			<h4>CATZRULEZ - Como Cuidar de Gatinhos I</h4>
-			  			<p> Tempo de estudo na semana: <strong>36h </strong> </p>
-			  			<p> Prioridade: <strong>5</strong></p>
-
-			  			<br>
-
-			  			<h4> AHHH101 - Como entrar em pânico com o Toninho I </h4>
-			  			<p> Tempo de estudo na semana: <strong>4h </strong> </p>
-			  			<p> Prioridade: <strong>4</strong></p>
-
-
-			  	</div>
-			  </div>
-			</div>
-		</div>
-	</center>
-	
-
-    <script type="text/javascript">
-        /*Inicializa dados*/
-	    global.open();
-	</script>
 
 </body>
 	<div class="container bg-2">
@@ -114,7 +71,4 @@
 			</center>
 		</footer> 	
 	</div>
-
 </html>
-
-	

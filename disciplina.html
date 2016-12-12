@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+	<title>studule</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/disciplina.js"></script>
+    <script src="js/horario.js"></script>
+    <script src="js/semana.js"></script>
+    <script src="js/3rdparty/js.cookie.js"></script>
+
+    <link rel="stylesheet" href="default.css">
+
+</head>
+
+<body>
+		
+	<div class="jumbotron bg-1 text-center">
+		<h1>studule</h1>
+		<h4> seu horário de estudos </h4>
+	</div>
+
+	<nav class="navbar bg-1  navbar-default">
+	  	<center>
+		    <ul class="nav navbar-nav">
+		    	<li><a href="index.html"> studule </a></li>
+		        <li class="active"><a href="index.html"> Adicionar Disciplina </a></li>
+			    <li><a href="semana.html"> Horário </a></li>
+		    </ul>
+		</center>
+	  </div>
+	</nav>
+
+
+
+	<center>
+		<div class="container bg-1">
+			<div class="row">
+				<div class="col-sm-6">	
+					<form action="disciplinas.php">
+					
+						<h3>Insira os dados a seguir para gerar uma distribuição de horários: </h3>
+						<br>
+
+			  			<p> <strong>Nome da disciplina:</strong> <input bg-2 type="text" id="disciplina" value=" "></p>
+			  			<br>
+
+			  			<p><strong> Prioridade (1 a 5): </strong><input type="text" name="prioridade" value=" "></p>
+			  			<br>
+
+
+			  			<p><strong> Tempo disponível: </strong><input type="text"  name="tempo_conclusão2" value=" "></p>
+			  			<p> (durante a semana) </p>
+			  			<br>
+			  		</form>
+			  	</div>
+			
+
+			  	<div class="col-sm-6">
+			  		<h3> Disciplinas cadastradas </h3>
+			  			<br>
+			  			</br>
+
+			  			<h4>CATZRULEZ - Como Cuidar de Gatinhos I</h4>
+			  			<p> Tempo de estudo na semana: <strong>36h </strong> </p>
+			  			<p> Prioridade: <strong>5</strong></p>
+
+			  			<br>
+
+			  			<h4> AHHH101 - Como entrar em pânico com o Toninho I </h4>
+			  			<p> Tempo de estudo na semana: <strong>4h </strong> </p>
+			  			<p> Prioridade: <strong>4</strong></p>
+
+
+			  	</div>
+			  </div>
+			</div>
+		</div>
+	</center>
+	
+
+    <script type="text/javascript">
+        /*Inicializa dados*/
+	    global.open();
+	</script>
+
+</body>
+	<div class="container bg-2">
+		<footer>
+
+			<center>
+			<h3>studule<h3>
+			<h4>2016</h4>
+			</center>
+		</footer> 	
+	</div>
+
+</html>
+
+	
