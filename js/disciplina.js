@@ -16,6 +16,7 @@ function describeDisc(disc) {
     res.innerHTML = "<h4>" + disc.apelido + " - " + disc.nome + "</h4>";
     res.innerHTML += "<p>Tempo de estudo na semana: <strong>" + disc.horas + "h</strong></p>";
     res.innerHTML += "<p>Prioridade: <strong>" + disc.prioridade + "</strong></p>";
+    res.innerHTML +=  "<button onclick='removeDisc(\""+ disc.nome + "\")' type='button' class='btn btn-danger newdisc_but'>Remover</button>";
     return res;
 }
 
@@ -26,4 +27,12 @@ function describeAllDisc() {
         all.push(describeDisc(window.disciplinas[i]));
     }
     return all;
+}
+
+/*Deleta todas disciplinas com nome nome */
+function deleteDisc(nome) {
+    window.disciplinas = window.disciplinas.filter(function(item) {
+        return item.nome != nome;
+    });
+    global.save();
 }

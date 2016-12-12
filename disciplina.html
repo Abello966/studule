@@ -56,6 +56,13 @@
             global.save();
         }
 
+        function removeDisc(name) {
+            /*chama model*/
+            deleteDisc(name);
+            /*atualiza*/
+            location.reload();
+        }
+
         /*Quando tudo estiver pronto carrega disciplinas */
         $(document).ready(function() {
             discs = describeAllDisc();
