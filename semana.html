@@ -27,9 +27,25 @@
             padding-right: 2.5%;
         }
 
-       th.notavailable {
-           background-color: #ff9c9c;
+       th.available {
+           background-color: #a4ffa4;
        }
+
+       .main_buttons button {
+            margin-right: 3%;
+            margin-left: 3%;
+        }
+       .main_buttons {
+           text-align: center;
+           margin-bottom: 1%;
+           margin-top: 1.5%;
+       }
+
+       .pre_text {
+           padding-left: 3%;
+          font-size: 120%;
+       }
+
     </style>
     <script>
         //carrega informações de cookies
@@ -52,14 +68,7 @@
                 var nday = clicked.getAttribute('data-day');
                 var nhor = clicked.getAttribute('data-hor');
                 if (nday != null && nhor != null && !build) {
-                    result = mudaDisponibilidade(nday, nhor);
-                    console.log(result);
-                    if (result == true) {
-                        event.target.setAttribute('class', "");
-                    }
-                    if (result == false) {
-                        event.target.setAttribute('class', 'notavailable');
-                    }
+                    mudaDisponibilidade(nday, nhor);
                 }
             });
 
@@ -90,7 +99,18 @@
 	</nav>
 
 
-	
+    <div class="pre_text">
+    Modo de uso:
+        <ul>
+            <li>Selecione horários ocupados</li>
+            <li>Gere horário pressionando "Gerar Horário"</li>
+            <li>Caso queira mudar, pressione "Reset" primeiro e depois gere um novo horário"</li>
+        </ul>
+    </div>	
+    <div class='main_buttons'>
+        <button onclick="generateSemana()" type="button" class="btn btn-default newdisc_but">Gerar Horário</button>
+        <button onclick="resetSemana()" type="button" class="btn btn-default newdisc_but">Reset</button>
+    </div>
     <div class="table_container">	
 		<div class="table-responsive bg-2">
 		  <table class="table table-bordered">

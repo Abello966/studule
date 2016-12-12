@@ -36,3 +36,12 @@ function deleteDisc(nome) {
     });
     global.save();
 }
+
+/*compara disciplinas para sorting*/
+function compareDisc(disca, discb) {
+    if (disca.prioridade < discb.prioridade)
+        return 1;
+    if (disca.prioridade > discb.prioridade)
+        return -1;
+    return 0;
+}
