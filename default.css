@@ -1,0 +1,15 @@
+
+.bg-1 {
+    background-color:  #1abc9c; /* Green */
+    color: #ffffff;
+}
+
+.bg-2 {
+    background-color: #ffffff;
+    color: #12876f;
+}
+
+input{
+	color: #12876f;
+}
+
